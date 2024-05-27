@@ -1,58 +1,73 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="body">
+    <div class="app-container">
+      <swiper
+        :navigation="true"
+        :modules="modules"
+        :pagination="{ clickable: true }"
+        :slides-per-view="2"
+        :space-between="10"
+        :autoplay="{ delay: 2500, disableOnInteraction: false }"
+        @slideChange="onSlideChange"
+        class="mySwiper"
+      >
+        <swiper-slide><img src="../assets/1.jpg" alt=""></swiper-slide>
+        <swiper-slide><img src="../assets/2.jpeg" alt=""></swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+        <swiper-slide>Slide 4</swiper-slide>
+        <swiper-slide>Slide 5</swiper-slide>
+        <swiper-slide>Slide 6</swiper-slide>
+        <swiper-slide>Slide 7</swiper-slide>
+        <swiper-slide>Slide 8</swiper-slide>
+        <swiper-slide>Slide 9</swiper-slide>
+      </swiper>
+    </div>
+    <img src="../assets/1.jpg" alt="">
   </div>
 </template>
 
 <script>
+//import MyBlock from './MyBlock.vue'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  data() {
+    return {
+      images: [
+        '../assets/1.jpg',
+        '../assets/2.jpeg',
+        '../assets/3.jpg'
+      ],
+      swiperOptions: {
+        direction: "horizontal",
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 1500, // 自动播放的时长
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
+      }
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.body {
+  background-color: black;
 }
 </style>
+
+
